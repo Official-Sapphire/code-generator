@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Generator</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #1e1e2e; /* Catppuccin base */
+      color: #cdd6f4; /* Text */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #cba6f7;
+      color: #a6e3a1;
+      font-size: 20px;
+      text-align: center;
+      outline: none;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #cba6f7;
+      color: #1e1e2e;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #f1c5ff;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="codeBox" placeholder="..." readonly />
+  <button onclick="generateCode()">Generate</button>
+
+  <script>
+    function generateRandomCode(length = 16) {
+      const chars = '0123456789abcdef';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+        result += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return result;
+    }
+
+    function generateCode() {
+      const code = generateRandomCode();
+      document.getElementById("codeBox").value = code;
+    }
+  </script>
+</body>
+</html>
